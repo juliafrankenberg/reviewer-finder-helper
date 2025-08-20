@@ -13,23 +13,27 @@ def get_scopus_link_two_names(full_name: str) -> str:
 # multiple last names
 def get_scopus_link_multi_names(full_name: str) -> dict:
     """
-    Returns two Scopus link options for names with 3+ words
+    For names with 3+ parts, return two Scopus search links:
+    - Option 1: first word = first name, rest = surname(s)
+    - Option 2: first two words = first name(s), rest = surname(s)
     """
     parts = full_name.strip().split()
+
     if len(parts) < 3:
         raise ValueError("Name must have at least three words for this function.")
 
-    # Option 1: last word is surname
-    surname1 = parts[-1]
-    firstname1 = " ".join(parts[:-1])
+    # Option 1: first word = first name
+    firstname1 = parts[0]
+    surname1 = " ".join(parts[1:])
 
-    # Option 2: last two words are surname
-    surname2 = " ".join(parts[-2:])
-    firstname2 = " ".join(parts[:-2])
+     # Option 2: first two words = first names
+    firstname2 = " ".join(parts[:2])
+    surname2 = " ".join(parts[2:])
+
 
     return {
-        "Surname is Last Name only": build_scopus_link(surname1, firstname1),
-        "Surname are Multiple Names": build_scopus_link(surname2, firstname2),
+        "One First Name": build_scopus_link(surname1, firstname1),
+        "Two First Names": build_scopus_link(surname2, firstname2),
     }
 
 
