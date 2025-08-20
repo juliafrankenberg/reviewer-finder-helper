@@ -7,12 +7,16 @@ from src.scopus import get_scopus_link_multi_names
 
 st.title("Julia's Reviewer Finder Helper")
 
+st.markdown("This tool will perform the search on three platforms at the same time: Google Scholar, PubMed and Scopus.")
+st.markdown("For Scopus users have to log-in beforehand.")
+st.markdown("Note: Links should open automatically, but pop-ups might be blocked")
+
+
 
 # Use a form to catch "Enter" as submission
 with st.form(key="name_form"):
     author_name = st.text_input("Enter author name:", "Julia Frankenberg Garcia")
     submitted = st.form_submit_button("Search")
-st.markdown("Note: The pop-ups for automatically opened links might be blocked")
 
 if submitted:
     # Generate links

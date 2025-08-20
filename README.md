@@ -8,6 +8,7 @@ It is a simple web app, built using streamlit, that searches academic researcher
 * PubMed
 
 * Scopus 
+    * Users need to login to scopus before using it
     * If there are multiple names it will give a couple of options of combinations of first/last names
     * There is a lot of ambiguity in Scopus, so I don't think there is a point in trying to directly access the author profile (the potential author list needs to be inspected)
 
