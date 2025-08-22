@@ -7,6 +7,10 @@ It is a simple web app, built using streamlit, that searches academic researcher
 
 * PubMed
 
+* SN Insights
+    * Users need to log-in to be able to use this
+    * The link will take you to a list of researchers and you have to click the one you want; the researcher won't be there if they don't have a profile on SN insights, but you should be able to see their publications
+
 * Scopus 
     * Users need to login to scopus before using it
     * If there are multiple names it will give a couple of options of combinations of first/last names
@@ -15,5 +19,4 @@ It is a simple web app, built using streamlit, that searches academic researcher
 
    Note: I haven't been able to add the SN Reviewer finder tool as this needs API/something more complex atm 
 
-   #TO-DO1: use scholarly to automatically get the link for google scholar author profile (not just the google scholar search)
-   
+ 
