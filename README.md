@@ -17,6 +17,9 @@ It is a simple web app, built using streamlit, that searches academic researcher
     * There is a lot of ambiguity in Scopus, so I don't think there is a point in trying to directly access the author profile (the potential author list needs to be inspected)
 
 
-   Note: I haven't been able to add the SN Reviewer finder tool as this needs API/something more complex atm 
+It has been deployed to: https://jfg-reviewerfinder.streamlit.app
+
+
+Note: I haven't been able to add the SN Reviewer finder tool as this needs API/something more complex atm 
 
  
