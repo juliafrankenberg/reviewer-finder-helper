@@ -17,6 +17,11 @@ It is a simple web app, built using streamlit, that searches academic researcher
     * There is a lot of ambiguity in Scopus, so I don't think there is a point in trying to directly access the author profile (the potential author list needs to be inspected)
 
 
+Users can either:
+* search the author name directly
+* search several authors from a specific citation: this will retrieve the author list from a manuscript title search in PubMed and perform the search on all platforms for each author (the goal is to facilitate finding reviewers from citations)
+
+
 It has been deployed to: https://jfg-reviewerfinder.streamlit.app
 
 
