@@ -70,9 +70,10 @@ if citation_submitted:
     if not title:
         st.error("No PubMed record found for this citation.")
     else:
-        #st.markdown(f"**Title:** {title}")
-        st.markdown(f"**Manuscritp found:** {citation_string} [View on PubMed]({pubmed_link})")
-
+        st.markdown(
+    f"**Manuscript found:**\n\n"
+    f"{citation_string} [View on PubMed]({pubmed_link})"
+    )
 
         # ---------- Generate links for each author ----------
         for author in authors:
