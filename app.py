@@ -11,20 +11,20 @@ from src.citation_search import pubmed_from_citation
 
 st.title("Julia's Reviewer Finder Helper")
 
-st.markdown("- This tool will perform the search on 4 platforms at the same time: Google Scholar, PubMed, SN Insights and Scopus.")
+st.markdown("This tool will help you search for reviewer/researcher information on multiple platforms at the same time. At the moment the platforms are: Google Scholar, PubMed, SN Insights and Scopus.")
 st.markdown("- For Scopus and SN Insights users have to log-in beforehand.")
 st.markdown("""
 - You can either:
-    - search the author name
-    - search several authors from a specific citation
+    - search the potential reviewer by name
+    - search several potential reviewers from a specific citation (e.g. when trying to find reviewers from a manuscript's citations)
 """)
 
 st.markdown("---")  # separator line
-st.subheader("Search author by name:")
+st.subheader("Search reviewer by name:")
 
 # Use a form to catch "Enter" as submission
 with st.form(key="name_form"):
-    author_name = st.text_input("Enter author name:", "")
+    author_name = st.text_input("Enter reviewer name:", "")
     submitted = st.form_submit_button("Search")
 
 
@@ -57,7 +57,7 @@ if submitted:
 # ------------ Citation Search ---------------- #
 
 st.markdown("---")  # separator line
-st.subheader("Search authors from citation:")
+st.subheader("Search reviewers from citation:")
 
 with st.form(key="citation_form"):
     citation_input = st.text_input("Paste **title** of cited manuscript:")
