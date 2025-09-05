@@ -1,14 +1,16 @@
 
 # src/scholar.py
 
-def google_scholar(author_name: str) -> str:
-   
+import urllib.parse
+
+def google_scholar(query: str) -> str:
     """
-    Return a Google Scholar search URL for the given author name.
+    Return a Google Scholar search URL for the given query.
+    Works for both author names and emails.
     """
     base_url = "https://scholar.google.com/scholar?q="
-    query = "+".join(author_name.strip().split())
-    return base_url + query
+    encoded_query = urllib.parse.quote(query.strip())  # safely encode spaces, @, etc.
+    return base_url + encoded_query
 
 
 
