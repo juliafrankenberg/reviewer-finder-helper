@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 from src.scholar import google_scholar
 from src.pubmed import get_pubmed_link
-from src.scopus import get_scopus_links   # unified function
+from src.scopus import get_scopus_links  
 from src.sninsights import get_sn_insights_link
 from src.citation_search import pubmed_from_citation
 
@@ -79,8 +79,14 @@ if citation_submitted:
                 st.markdown(f"🔗 [SN Insights]({get_sn_insights_link(author)})")
 
                 scopus_links = get_scopus_links(author)
-                for option, link in scopus_links.items():
-                    st.markdown(f"🔗 [Scopus]({link}) ({option})")
+                # If dict (multi-part case): show with labels
+                if isinstance(scopus_links, dict):
+                    for label, link in scopus_links.items():
+                        st.markdown(f"🔗 [Scopus]({link}) ({label})")
+                # If list (email or two-part name): show without labels
+                else:
+                    for link in scopus_links:
+                        st.markdown(f"🔗 [Scopus]({link})")
 
 
-st.markdown("Developed by Julia Frankenberg Garcia. Feedback or suggestions always welcome!")
+st.markdown("Developed by Julia Frankenberg Garcia. Feedback or suggestions are always welcome!")
