@@ -6,7 +6,6 @@ from src.scopus import get_scopus_links
 from src.sninsights import get_sn_insights_link
 from src.citation_search import pubmed_from_citation
 
-
 st.title("Reviewer Finder Helper")
 
 st.markdown("This tool will help you search for reviewer/researcher information on multiple platforms at the same time. At the moment the platforms are: Google Scholar, PubMed, SN Insights and Scopus.")
@@ -21,8 +20,7 @@ st.markdown("---")  # separator line
 st.subheader("Search reviewer by name/e-mail:")
 st.markdown("Choosing name vs e-mail can return different results. Generally for established researchers using the name should work better, but for researchers with common names the e-mail can help differentiate them from others. Feel free to try both!")  
 
-
-# Use a form to catch "Enter" as submission
+# ---------------- Search by name/email ---------------- #
 with st.form(key="name_form"):
     author_name = st.text_input("Enter reviewer name or email:", "")
     submitted = st.form_submit_button("Search")
@@ -40,17 +38,15 @@ if submitted:
     st.markdown(f"🔗 [PubMed]({pubmed_link})")
     st.markdown(f"🔗 [SN Insights]({sninsights_link})")
 
-    # If dict (multi-part case): show with labels
+    # Display Scopus links
     if isinstance(scopus_links, dict):
         for label, link in scopus_links.items():
             st.markdown(f"🔗 [Scopus]({link}) ({label})")
-    # If list (email or two-part name): show without labels
     else:
         for link in scopus_links:
             st.markdown(f"🔗 [Scopus]({link})")
 
-# ------------ Citation Search ---------------- #
-
+# ---------------- Search by citation ---------------- #
 st.markdown("---")  # separator line
 st.subheader("Search reviewers from citation:")
 st.markdown("This will return a search by the **name** of the authors only (not e-mails)")
@@ -72,6 +68,7 @@ if citation_submitted:
         )
 
         # ---------- Generate links for each author ----------
+        st.markdown("**Search links for authors:**")        
         for author in authors:
             with st.expander(author):
                 st.markdown(f"🔗 [Google Scholar]({google_scholar(author)})")
@@ -79,14 +76,11 @@ if citation_submitted:
                 st.markdown(f"🔗 [SN Insights]({get_sn_insights_link(author)})")
 
                 scopus_links = get_scopus_links(author)
-                # If dict (multi-part case): show with labels
                 if isinstance(scopus_links, dict):
                     for label, link in scopus_links.items():
                         st.markdown(f"🔗 [Scopus]({link}) ({label})")
-                # If list (email or two-part name): show without labels
                 else:
                     for link in scopus_links:
                         st.markdown(f"🔗 [Scopus]({link})")
-
 
 st.markdown("Developed by Julia Frankenberg Garcia. Feedback or suggestions are always welcome!")
